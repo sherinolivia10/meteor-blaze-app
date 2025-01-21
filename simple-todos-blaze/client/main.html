@@ -1,0 +1,64 @@
+<head>
+  <title>simple-todos-blaze</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+  {{> tasks}}
+</body>
+
+<!-- <template name="hello">
+  <button class="button">Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+</template>
+
+<template name="info">
+  <h2>Learn Meteor!</h2>
+  <ul>
+    <li>
+      <a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a>
+    </li>
+    <li>
+      <a href="http://guide.meteor.com" target="_blank">Follow the Guide</a>
+    </li>
+    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
+    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
+  </ul>
+</template>
+
+<template name="world">
+  <h3>...World!</h3>
+  <button class="button text-red-500 border-blue-950">Try me</button>
+  <span>Hello for the {{counter}}-th time! Here are your tasks!</span>
+</template> -->
+
+<template name="tasks">
+  <h1>Task List Tutorial</h1>
+  <ul>
+    {{#each tasks}}
+    <li>
+      <label>
+
+        <input type="checkbox" class="taskCheckbox" {{taskChecked}} />
+        <span> {{title}}: {{description}} ({{taskStatus}})</span>
+      </label>
+      <button type="button" class="editButton">Edit</button>
+      <button type="button" class="deleteButton" id="{{_id}}">X</button>
+      <form class="updateTask hidden" id="form{{_id}}">
+        <input type="text" name="editTitle" placeholder="New Task Title" />
+        <input type="text" name="editDesc" placeholder="New Task Description" />
+        <button type="submit">Update Task</button>
+      </form>
+    </li>
+    {{/each}}
+  </ul>
+  <form id="newTaskForm">
+    <input type="text" name="taskTitle" placeholder="Input Task Title.." />
+    <input type="text" name="taskDesc" placeholder="Input Task Description.." />
+    <button type="submit">Add Task</button>
+  </form>
+  <span>{{taskMessage}}</span>
+</template>
